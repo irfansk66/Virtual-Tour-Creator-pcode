@@ -1,0 +1,271 @@
+﻿<Window x:Class="Pano.Net.View.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:my="clr-namespace:Pano.Net.View"
+        xmlns:conv="clr-namespace:Pano.Net.Converters"
+        Title="TourCreator.Net" Height="350" Width="525" WindowState="Maximized"
+        Icon="/Pano.Net;component/Resources/icon_16.png">
+
+
+
+   
+
+    <Window.Resources>
+        <Style TargetType="Image" x:Key="ImageStyle">
+            <Setter Property="Source" Value="/Resources/noimage.png"/>
+            <Setter Property="AllowDrop" Value="True"/>
+            <EventSetter Event="Drop" Handler="DropHandler"/>
+        </Style>
+        <conv:FullscreenToVisibilityConverter x:Key="fullscreenToVisibilityConverter"/>
+        <conv:FullscreenToWindowStyleConverter x:Key="fullscreenToWindowStyleConverter"/>
+        <BooleanToVisibilityConverter x:Key="booleanToVisibilityConverter"/>
+    </Window.Resources>
+   
+
+    <Window.InputBindings>
+        <KeyBinding Key="F" Command="{Binding FullscreenCommand}"/>
+        <KeyBinding Key="O" Command="{Binding OpenCommand}"/>
+        <KeyBinding Key="X" Command="{Binding ExitCommand}"/>
+        <KeyBinding Key="F1" Command="{Binding AboutCommand}"/>
+    </Window.InputBindings>
+
+    <Window.WindowStyle>
+        <Binding Path="IsFullscreen" Converter="{StaticResource fullscreenToWindowStyleConverter}"/>
+    </Window.WindowStyle>
+
+
+
+    <Grid>
+        
+        <!--<Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>-->
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="5*" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="35*" />
+        </Grid.RowDefinitions>
+
+
+        <Grid Grid.Row="0"   Grid.ColumnSpan="2">
+
+            <Menu Visibility="{Binding IsFullscreen,Converter={StaticResource fullscreenToVisibilityConverter}}">
+                <MenuItem Header="_File" >
+                    <MenuItem Header="Import Folder"  Click="MenuItem_Click" InputGestureText="O"/>
+                    
+                    <MenuItem Header="Exit" Command="{Binding ExitCommand}" InputGestureText="X"/>
+                </MenuItem>
+                <MenuItem Header="_View">
+                    <MenuItem Header="Full screen" Command="{Binding FullscreenCommand}" InputGestureText="F"/>
+                    <MenuItem Header="Status bar" x:Name="menuStatusBar" IsCheckable="True" IsChecked="True"/>
+                </MenuItem>
+                <MenuItem Header="_Help">
+                    <MenuItem Header="Controls" Command="{Binding ControlsCommand}" />
+                    <MenuItem Header="About" Command="{Binding AboutCommand}" InputGestureText="F1"/>
+                </MenuItem>
+            </Menu>
+
+        </Grid>
+
+
+        
+        <Grid Grid.Column="1" Grid.Row="1"  ShowGridLines="True" Background="Turquoise" AllowDrop="True"  >
+            <Grid.RowDefinitions  >
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions  >
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+
+
+<!--Row -1-->
+            <Image Name="x00" Margin="10,10,10,10"  Grid.Row="0" Grid.Column="0" Style="{StaticResource ImageStyle}"   MouseRightButtonUp="Delete_MouseRightButtonUp"/>
+            <Image Name="x01" Margin="10,10,10,10"  Grid.Row="0" Grid.Column="1" Style="{StaticResource ImageStyle}"  MouseRightButtonUp="Delete_MouseRightButtonUp"/>
+            <Image Name="x02" Margin="10,10,10,10"  Grid.Row="0" Grid.Column="2" Style="{StaticResource ImageStyle}"  MouseRightButtonUp="Delete_MouseRightButtonUp"/>
+            <Image Name="x03" Margin="10,10,10,10"  Grid.Row="0" Grid.Column="3" Style="{StaticResource ImageStyle}"  MouseRightButtonUp="Delete_MouseRightButtonUp"/>
+            <Image Name="x04" Margin="10,10,10,10"  Grid.Row="0" Grid.Column="4" Style="{StaticResource ImageStyle}"  MouseRightButtonUp="Delete_MouseRightButtonUp"/>
+            <Image Name="x05" Margin="10,10,10,10"  Grid.Row="0" Grid.Column="5" Style="{StaticResource ImageStyle}"  MouseRightButtonUp="Delete_MouseRightButtonUp"/>
+            <Image Name="x06" Margin="10,10,10,10"  Grid.Row="0" Grid.Column="6" Style="{StaticResource ImageStyle}"  MouseRightButtonUp="Delete_MouseRightButtonUp"/>
+            <Image Name="x07" Margin="10,10,10,10"  Grid.Row="0" Grid.Column="7" Style="{StaticResource ImageStyle}"  MouseRightButtonUp="Delete_MouseRightButtonUp"/>
+            <Image Name="x08" Margin="10,10,10,10"  Grid.Row="0" Grid.Column="8" Style="{StaticResource ImageStyle}"  MouseRightButtonUp="Delete_MouseRightButtonUp"/>
+            <Image Name="x09" Margin="2"  Grid.Row="0" Grid.Column="9" Source="/Resources/comp.png"/>
+            <!--Row -2-->
+            <Image Name="x10" Margin="10,10,10,10"  Grid.Row="1" Grid.Column="0" Style="{StaticResource ImageStyle}"  MouseRightButtonUp="Delete_MouseRightButtonUp"/>
+            <Image Name="x11" Margin="10,10,10,10"  Grid.Row="1" Grid.Column="1" Style="{StaticResource ImageStyle}"  MouseRightButtonUp="Delete_MouseRightButtonUp"/>
+            <Image Name="x12" Margin="10,10,10,10"  Grid.Row="1" Grid.Column="2" Style="{StaticResource ImageStyle}"  MouseRightButtonUp="Delete_MouseRightButtonUp"/>
+            <Image Name="x13" Margin="10,10,10,10"  Grid.Row="1" Grid.Column="3" Style="{StaticResource ImageStyle}"  MouseRightButtonUp="Delete_MouseRightButtonUp"/>
+            <Image Name="x14" Margin="10,10,10,10"  Grid.Row="1" Grid.Column="4" Style="{StaticResource ImageStyle}"  MouseRightButtonUp="Delete_MouseRightButtonUp"/>
+            <Image Name="x15" Margin="10,10,10,10"  Grid.Row="1" Grid.Column="5" Style="{StaticResource ImageStyle}"  MouseRightButtonUp="Delete_MouseRightButtonUp"/>
+            <Image Name="x16" Margin="10,10,10,10"  Grid.Row="1" Grid.Column="6" Style="{StaticResource ImageStyle}"  MouseRightButtonUp="Delete_MouseRightButtonUp"/>
+            <Image Name="x17" Margin="10,10,10,10"  Grid.Row="1" Grid.Column="7" Style="{StaticResource ImageStyle}"  MouseRightButtonUp="Delete_MouseRightButtonUp"/>
+            <Image Name="x18" Margin="10,10,10,10"  Grid.Row="1" Grid.Column="8" Style="{StaticResource ImageStyle}"  MouseRightButtonUp="Delete_MouseRightButtonUp"/>
+            <Image Name="x19" Margin="10,10,10,10"  Grid.Row="1" Grid.Column="9" Style="{StaticResource ImageStyle}"  MouseRightButtonUp="Delete_MouseRightButtonUp"/>
+            <!--Row -3-->
+            <Image Name="x20" Margin="10,10,10,10"  Grid.Row="2" Grid.Column="0" Style="{StaticResource ImageStyle}"  MouseRightButtonUp="Delete_MouseRightButtonUp"/>
+            <Image Name="x21" Margin="10,10,10,10"  Grid.Row="2" Grid.Column="1" Style="{StaticResource ImageStyle}"  MouseRightButtonUp="Delete_MouseRightButtonUp"/>
+            <Image Name="x22" Margin="10,10,10,10"  Grid.Row="2" Grid.Column="2" Style="{StaticResource ImageStyle}"  MouseRightButtonUp="Delete_MouseRightButtonUp"/>
+            <Image Name="x23" Margin="10,10,10,10"  Grid.Row="2" Grid.Column="3" Style="{StaticResource ImageStyle}"  MouseRightButtonUp="Delete_MouseRightButtonUp"/>
+            <Image Name="x24" Margin="10,10,10,10"  Grid.Row="2" Grid.Column="4" Style="{StaticResource ImageStyle}"  MouseRightButtonUp="Delete_MouseRightButtonUp"/>
+            <Image Name="x25" Margin="10,10,10,10"  Grid.Row="2" Grid.Column="5" Style="{StaticResource ImageStyle}"  MouseRightButtonUp="Delete_MouseRightButtonUp"/>
+            <Image Name="x26" Margin="10,10,10,10"  Grid.Row="2" Grid.Column="6" Style="{StaticResource ImageStyle}"  MouseRightButtonUp="Delete_MouseRightButtonUp"/>
+            <Image Name="x27" Margin="10,10,10,10"  Grid.Row="2" Grid.Column="7" Style="{StaticResource ImageStyle}"   MouseRightButtonUp="Delete_MouseRightButtonUp"/>
+            <Image Name="x28" Margin="10,10,10,10"  Grid.Row="2" Grid.Column="8" Style="{StaticResource ImageStyle}"  MouseRightButtonUp="Delete_MouseRightButtonUp"/>
+            <Image Name="x29" Margin="10,10,10,10"  Grid.Row="2" Grid.Column="9" Style="{StaticResource ImageStyle}"  MouseRightButtonUp="Delete_MouseRightButtonUp"/>
+            <!--Row -4-->
+            <Image Name="x30" Margin="10,10,10,10"  Grid.Row="3" Grid.Column="0" Style="{StaticResource ImageStyle}"  MouseRightButtonUp="Delete_MouseRightButtonUp"/>
+            <Image Name="x31" Margin="10,10,10,10"  Grid.Row="3" Grid.Column="1" Style="{StaticResource ImageStyle}"  MouseRightButtonUp="Delete_MouseRightButtonUp"/>
+            <Image Name="x32" Margin="10,10,10,10"  Grid.Row="3" Grid.Column="2" Style="{StaticResource ImageStyle}"  MouseRightButtonUp="Delete_MouseRightButtonUp"/>
+            <Image Name="x33" Margin="10,10,10,10"  Grid.Row="3" Grid.Column="3" Style="{StaticResource ImageStyle}"  MouseRightButtonUp="Delete_MouseRightButtonUp"/>
+            <Image Name="x34" Margin="10,10,10,10"  Grid.Row="3" Grid.Column="4" Style="{StaticResource ImageStyle}"  MouseRightButtonUp="Delete_MouseRightButtonUp"/>
+            <Image Name="x35" Margin="10,10,10,10"  Grid.Row="3" Grid.Column="5" Style="{StaticResource ImageStyle}"  MouseRightButtonUp="Delete_MouseRightButtonUp"/>
+            <Image Name="x36" Margin="10,10,10,10"  Grid.Row="3" Grid.Column="6" Style="{StaticResource ImageStyle}"  MouseRightButtonUp="Delete_MouseRightButtonUp"/>
+            <Image Name="x37" Margin="10,10,10,10"  Grid.Row="3" Grid.Column="7" Style="{StaticResource ImageStyle}"  MouseRightButtonUp="Delete_MouseRightButtonUp"/>
+            <Image Name="x38" Margin="10,10,10,10"  Grid.Row="3" Grid.Column="8" Style="{StaticResource ImageStyle}"  MouseRightButtonUp="Delete_MouseRightButtonUp"/>
+            <Image Name="x39" Margin="10,10,10,10"  Grid.Row="3" Grid.Column="9" Style="{StaticResource ImageStyle}"  MouseRightButtonUp="Delete_MouseRightButtonUp"/>
+            <!--Row -5-->
+            <Image Name="x40" Margin="10,10,10,10"  Grid.Row="4" Grid.Column="0" Style="{StaticResource ImageStyle}" MouseRightButtonUp="Delete_MouseRightButtonUp"/>
+            <Image Name="x41" Margin="10,10,10,10"  Grid.Row="4" Grid.Column="1" Style="{StaticResource ImageStyle}"  MouseRightButtonUp="Delete_MouseRightButtonUp"/>
+            <Image Name="x42" Margin="10,10,10,10"  Grid.Row="4" Grid.Column="2" Style="{StaticResource ImageStyle}"  MouseRightButtonUp="Delete_MouseRightButtonUp"/>
+            <Image Name="x43" Margin="10,10,10,10"  Grid.Row="4" Grid.Column="3" Style="{StaticResource ImageStyle}"  MouseRightButtonUp="Delete_MouseRightButtonUp"/>
+            <Image Name="x44" Margin="10,10,10,10"  Grid.Row="4" Grid.Column="4" Style="{StaticResource ImageStyle}"  MouseRightButtonUp="Delete_MouseRightButtonUp"/>
+            <Image Name="x45" Margin="10,10,10,10"  Grid.Row="4" Grid.Column="5" Style="{StaticResource ImageStyle}"  MouseRightButtonUp="Delete_MouseRightButtonUp"/>
+            <Image Name="x46" Margin="10,10,10,10"  Grid.Row="4" Grid.Column="6" Style="{StaticResource ImageStyle}"  MouseRightButtonUp="Delete_MouseRightButtonUp"/>
+            <Image Name="x47" Margin="10,10,10,10"  Grid.Row="4" Grid.Column="7" Style="{StaticResource ImageStyle}"  MouseRightButtonUp="Delete_MouseRightButtonUp"/>
+            <Image Name="x48" Margin="10,10,10,10"  Grid.Row="4" Grid.Column="8" Style="{StaticResource ImageStyle}"  MouseRightButtonUp="Delete_MouseRightButtonUp"/>
+            <Image Name="x49" Margin="10,10,10,10"  Grid.Row="4" Grid.Column="9" Style="{StaticResource ImageStyle}"  MouseRightButtonUp="Delete_MouseRightButtonUp"/>
+            <!--Row -6-->
+            <Image Name="x50" Margin="10,10,10,10"  Grid.Row="5" Grid.Column="0" Style="{StaticResource ImageStyle}" MouseRightButtonUp="Delete_MouseRightButtonUp"/>
+            <Image Name="x51" Margin="10,10,10,10"  Grid.Row="5" Grid.Column="1" Style="{StaticResource ImageStyle}"  MouseRightButtonUp="Delete_MouseRightButtonUp"/>
+            <Image Name="x52" Margin="10,10,10,10"  Grid.Row="5" Grid.Column="2" Style="{StaticResource ImageStyle}"  MouseRightButtonUp="Delete_MouseRightButtonUp"/>
+            <Image Name="x53" Margin="10,10,10,10"  Grid.Row="5" Grid.Column="3" Style="{StaticResource ImageStyle}"  MouseRightButtonUp="Delete_MouseRightButtonUp"/>
+            <Image Name="x54" Margin="10,10,10,10"  Grid.Row="5" Grid.Column="4" Style="{StaticResource ImageStyle}"   MouseRightButtonUp="Delete_MouseRightButtonUp"/>
+            <Image Name="x55" Margin="10,10,10,10"  Grid.Row="5" Grid.Column="5" Style="{StaticResource ImageStyle}"  MouseRightButtonUp="Delete_MouseRightButtonUp"/>
+            <Image Name="x56" Margin="10,10,10,10"  Grid.Row="5" Grid.Column="6" Style="{StaticResource ImageStyle}"  MouseRightButtonUp="Delete_MouseRightButtonUp"/>
+            <Image Name="x57" Margin="10,10,10,10"  Grid.Row="5" Grid.Column="7" Style="{StaticResource ImageStyle}"  MouseRightButtonUp="Delete_MouseRightButtonUp"/>
+            <Image Name="x58" Margin="10,10,10,10"  Grid.Row="5" Grid.Column="8" Style="{StaticResource ImageStyle}"  MouseRightButtonUp="Delete_MouseRightButtonUp"/>
+            <Image Name="x59" Margin="10,10,10,10"  Grid.Row="5" Grid.Column="9" Style="{StaticResource ImageStyle}"  MouseRightButtonUp="Delete_MouseRightButtonUp"/>
+            <!--Row -7-->
+            <Image Name="x60" Margin="10,10,10,10"  Grid.Row="6" Grid.Column="0" Style="{StaticResource ImageStyle}" MouseRightButtonUp="Delete_MouseRightButtonUp"/>
+            <Image Name="x61" Margin="10,10,10,10"  Grid.Row="6" Grid.Column="1" Style="{StaticResource ImageStyle}"  MouseRightButtonUp="Delete_MouseRightButtonUp"/>
+            <Image Name="x62" Margin="10,10,10,10"  Grid.Row="6" Grid.Column="2" Style="{StaticResource ImageStyle}"  MouseRightButtonUp="Delete_MouseRightButtonUp"/>
+            <Image Name="x63" Margin="10,10,10,10"  Grid.Row="6" Grid.Column="3" Style="{StaticResource ImageStyle}"  MouseRightButtonUp="Delete_MouseRightButtonUp"/>
+            <Image Name="x64" Margin="10,10,10,10"  Grid.Row="6" Grid.Column="4" Style="{StaticResource ImageStyle}"  MouseRightButtonUp="Delete_MouseRightButtonUp"/>
+            <Image Name="x65" Margin="10,10,10,10"  Grid.Row="6" Grid.Column="5" Style="{StaticResource ImageStyle}"  MouseRightButtonUp="Delete_MouseRightButtonUp"/>
+            <Image Name="x66" Margin="10,10,10,10"  Grid.Row="6" Grid.Column="6" Style="{StaticResource ImageStyle}"  MouseRightButtonUp="Delete_MouseRightButtonUp"/>
+            <Image Name="x67" Margin="10,10,10,10"  Grid.Row="6" Grid.Column="7" Style="{StaticResource ImageStyle}"  MouseRightButtonUp="Delete_MouseRightButtonUp"/>
+            <Image Name="x68" Margin="10,10,10,10"  Grid.Row="6" Grid.Column="8" Style="{StaticResource ImageStyle}"  MouseRightButtonUp="Delete_MouseRightButtonUp"/>
+            <Image Name="x69" Margin="10,10,10,10"  Grid.Row="6" Grid.Column="9" Style="{StaticResource ImageStyle}"  MouseRightButtonUp="Delete_MouseRightButtonUp"/>
+            <!--Row -8-->
+            <Image Name="x70" Margin="10,10,10,10"  Grid.Row="7" Grid.Column="0" Style="{StaticResource ImageStyle}"  MouseRightButtonUp="Delete_MouseRightButtonUp"/>
+            <Image Name="x71" Margin="10,10,10,10"  Grid.Row="7" Grid.Column="1" Style="{StaticResource ImageStyle}"  MouseRightButtonUp="Delete_MouseRightButtonUp"/>
+            <Image Name="x72" Margin="10,10,10,10"  Grid.Row="7" Grid.Column="2" Style="{StaticResource ImageStyle}"  MouseRightButtonUp="Delete_MouseRightButtonUp"/>
+            <Image Name="x73" Margin="10,10,10,10"  Grid.Row="7" Grid.Column="3" Style="{StaticResource ImageStyle}"  MouseRightButtonUp="Delete_MouseRightButtonUp"/>
+            <Image Name="x74" Margin="10,10,10,10"  Grid.Row="7" Grid.Column="4" Style="{StaticResource ImageStyle}"  MouseRightButtonUp="Delete_MouseRightButtonUp"/>
+            <Image Name="x75" Margin="10,10,10,10"  Grid.Row="7" Grid.Column="5" Style="{StaticResource ImageStyle}" MouseRightButtonUp="Delete_MouseRightButtonUp"/>
+            <Image Name="x76" Margin="10,10,10,10"  Grid.Row="7" Grid.Column="6" Style="{StaticResource ImageStyle}"  MouseRightButtonUp="Delete_MouseRightButtonUp"/>
+            <Image Name="x77" Margin="10,10,10,10"  Grid.Row="7" Grid.Column="7" Style="{StaticResource ImageStyle}" MouseRightButtonUp="Delete_MouseRightButtonUp"/>
+            <Image Name="x78" Margin="10,10,10,10"  Grid.Row="7" Grid.Column="8" Style="{StaticResource ImageStyle}"  MouseRightButtonUp="Delete_MouseRightButtonUp"/>
+            <Image Name="x79" Margin="10,10,10,10"  Grid.Row="7" Grid.Column="9" Style="{StaticResource ImageStyle}"  MouseRightButtonUp="Delete_MouseRightButtonUp"/>
+            <!--Row -9-->
+            <Image Name="x80" Margin="10,10,10,10"  Grid.Row="8" Grid.Column="0" Style="{StaticResource ImageStyle}"  MouseRightButtonUp="Delete_MouseRightButtonUp"/>
+            <Image Name="x81" Margin="10,10,10,10"  Grid.Row="8" Grid.Column="1" Style="{StaticResource ImageStyle}"  MouseRightButtonUp="Delete_MouseRightButtonUp"/>
+            <Image Name="x82" Margin="10,10,10,10"  Grid.Row="8" Grid.Column="2" Style="{StaticResource ImageStyle}"  MouseRightButtonUp="Delete_MouseRightButtonUp"/>
+            <Image Name="x83" Margin="10,10,10,10"  Grid.Row="8" Grid.Column="3" Style="{StaticResource ImageStyle}"  MouseRightButtonUp="Delete_MouseRightButtonUp"/>
+            <Image Name="x84" Margin="10,10,10,10"  Grid.Row="8" Grid.Column="4" Style="{StaticResource ImageStyle}"  MouseRightButtonUp="Delete_MouseRightButtonUp"/>
+            <Image Name="x85" Margin="10,10,10,10"  Grid.Row="8" Grid.Column="5" Style="{StaticResource ImageStyle}"  MouseRightButtonUp="Delete_MouseRightButtonUp"/>
+            <Image Name="x86" Margin="10,10,10,10"  Grid.Row="8" Grid.Column="6" Style="{StaticResource ImageStyle}"  MouseRightButtonUp="Delete_MouseRightButtonUp"/>
+            <Image Name="x87" Margin="10,10,10,10"  Grid.Row="8" Grid.Column="7" Style="{StaticResource ImageStyle}"  MouseRightButtonUp="Delete_MouseRightButtonUp"/>
+            <Image Name="x88" Margin="10,10,10,10"  Grid.Row="8" Grid.Column="8" Style="{StaticResource ImageStyle}"  MouseRightButtonUp="Delete_MouseRightButtonUp"/>
+            <Image Name="x89" Margin="10,10,10,10"  Grid.Row="8" Grid.Column="9" Style="{StaticResource ImageStyle}"  MouseRightButtonUp="Delete_MouseRightButtonUp"/>
+            <!--Row -10-->
+            <Image Name="x90" Margin="10,10,10,10"  Grid.Row="9" Grid.Column="0" Style="{StaticResource ImageStyle}"  MouseRightButtonUp="Delete_MouseRightButtonUp"/>
+            <Image Name="x91" Margin="10,10,10,10"  Grid.Row="9" Grid.Column="1" Style="{StaticResource ImageStyle}"  MouseRightButtonUp="Delete_MouseRightButtonUp"/>
+            <Image Name="x92" Margin="10,10,10,10"  Grid.Row="9" Grid.Column="2" Style="{StaticResource ImageStyle}"  MouseRightButtonUp="Delete_MouseRightButtonUp"/>
+            <Image Name="x93" Margin="10,10,10,10"  Grid.Row="9" Grid.Column="3" Style="{StaticResource ImageStyle}"  MouseRightButtonUp="Delete_MouseRightButtonUp"/>
+            <Image Name="x94" Margin="10,10,10,10"  Grid.Row="9" Grid.Column="4" Style="{StaticResource ImageStyle}"  MouseRightButtonUp="Delete_MouseRightButtonUp"/>
+            <Image Name="x95" Margin="10,10,10,10"  Grid.Row="9" Grid.Column="5" Style="{StaticResource ImageStyle}"  MouseRightButtonUp="Delete_MouseRightButtonUp"/>
+            <Image Name="x96" Margin="10,10,10,10"  Grid.Row="9" Grid.Column="6" Style="{StaticResource ImageStyle}"  MouseRightButtonUp="Delete_MouseRightButtonUp"/>
+            <Image Name="x97" Margin="10,10,10,10"  Grid.Row="9" Grid.Column="7" Style="{StaticResource ImageStyle}"  MouseRightButtonUp="Delete_MouseRightButtonUp"/>
+            <Image Name="x98" Margin="10,10,10,10"  Grid.Row="9" Grid.Column="8" Style="{StaticResource ImageStyle}"  MouseRightButtonUp="Delete_MouseRightButtonUp"/>
+            <!--<Image Name="x99" Margin="10,10,10,10"  Grid.Row="9" Grid.Column="9" Style="{StaticResource ImageStyle}" MouseLeftButtonUp="Image_MouseLeftButtonUp"/>-->
+            <Button Content="Process" Margin="10" FontWeight="Bold" Background="Navy" Grid.Row="9" Grid.Column="9" Click="Button_Click"/>
+
+
+           
+
+        </Grid>
+
+        <ScrollViewer VerticalScrollBarVisibility="Auto" Grid.Row="1" Grid.Column="0">
+            <Grid  Grid.Row="1" Grid.Column="0"   >
+
+                <ItemsControl Name="ImageList"   ItemsSource="{Binding ImageList}" VirtualizingStackPanel.IsVirtualizing="True" VirtualizingStackPanel.ScrollUnit="Pixel" >
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate >
+                            <Border BorderThickness="1" BorderBrush="#FFD0D1D7" Padding="5" Margin="10,10,0,0">
+                                <StackPanel Orientation="Horizontal">
+                                    <!--image and dimensions-->
+                                    <Grid Width="88" Height="55">
+                                        <Image Source="{Binding Path}"  HorizontalAlignment="Left" MouseLeftButtonDown="Image_MouseLeftButtonDown"/>
+                                        <TextBlock Background="#B2000000" Foreground="White" Height="16" TextAlignment="Center" VerticalAlignment="Bottom">
+                                            <TextBlock.Text>
+                                                <MultiBinding StringFormat="{}{0}x{1}">
+                                                    <Binding Path="Height"/>
+                                                    <Binding Path="Width"/>
+                                                </MultiBinding>
+                                            </TextBlock.Text>
+                                        </TextBlock>
+                                    </Grid>
+                                    <!--name, type and size-->
+                                    <StackPanel Orientation="Vertical" Margin="5,0,0,0" VerticalAlignment="Center">
+                                        <TextBlock Name="ImageName" Margin="1" Foreground="#FF787878" Text="{Binding FileName}"/>
+                                        <TextBlock Name="ImageType" Margin="1" Foreground="#FF787878">
+                                            <TextBlock.Text>
+                                                <MultiBinding StringFormat="Type: {0}">
+                                                    <Binding Path="Extension"/>
+                                                </MultiBinding>
+                                            </TextBlock.Text>
+                                        </TextBlock>
+                                        <TextBlock Name="ImageSize" Margin="1" Foreground="#FF787878">
+                                            <TextBlock.Text>
+                                                <MultiBinding StringFormat="Size: {0} Bytes">
+                                                    <Binding Path="Size"/>
+                                                </MultiBinding>
+                                            </TextBlock.Text>
+                                        </TextBlock>
+                                    </StackPanel>
+                                </StackPanel>
+                            </Border>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                </ItemsControl>
+            </Grid>
+            </ScrollViewer>
+   
+            
+    </Grid>
+
+</Window>
